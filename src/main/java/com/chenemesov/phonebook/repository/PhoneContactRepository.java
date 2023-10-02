@@ -6,4 +6,5 @@ import java.util.Optional;
 public interface PhoneContactRepository extends JpaRepository<PhoneContact, Long> {
     Optional<PhoneContact> findByPhoneNumber(String phoneNumber);
     Optional<PhoneContact> findById(Long id);
+    void deleteById(Long id);
 }

@@ -4,6 +4,7 @@ import com.chenemesov.phonebook.repository.PhoneContactRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 @Service
 public class PhoneContactService {
@@ -19,5 +20,18 @@ public class PhoneContactService {
         return repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("PhoneContact not found with id: " + id));
     }
-
+    public void deleteById(Long id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("Contact with ID " + id + " not found.");
+        }
+        repository.deleteById(id);
+    }
+    public void deleteByPhoneNumber(String phoneNumber) {
+        Optional<PhoneContact> contactOptional = repository.findByPhoneNumber(phoneNumber);
+        if (!contactOptional.isPresent()) {
+            throw new EntityNotFoundException("Contact with phone number " + phoneNumber + " not found.");
+        }
+        PhoneContact contact = contactOptional.get();
+        repository.delete(contact);
+    }
 }
