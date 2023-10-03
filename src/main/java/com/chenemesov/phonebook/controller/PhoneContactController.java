@@ -53,4 +53,11 @@ public class PhoneContactController {
     public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
+    @PutMapping("/{id}")
+    public PhoneContactDTO updateContact(@PathVariable Long id, @RequestBody PhoneContactDTO contactDTO) {
+        PhoneContact updatedContact = PhoneContactConverter.toEntity(contactDTO);
+        updatedContact.setId(id);
+        PhoneContact savedContact = service.updateContact(updatedContact);
+        return PhoneContactConverter.toDTO(savedContact);
+    }
 }

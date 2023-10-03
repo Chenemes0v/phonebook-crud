@@ -42,4 +42,10 @@ public class PhoneContactService {
         Pageable pageable = PageRequest.of(filter.getOffset(), filter.getLimit());
         return repository.findAll(pageable).getContent();
     }
+    public PhoneContact updateContact(PhoneContact updatedContact) {
+        if (!repository.existsById(updatedContact.getId())) {
+            throw new EntityNotFoundException("Contact with ID " + updatedContact.getId() + " not found.");
+        }
+        return repository.save(updatedContact);
+    }
 }
