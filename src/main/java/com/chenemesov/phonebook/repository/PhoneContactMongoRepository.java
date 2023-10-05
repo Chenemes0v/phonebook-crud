@@ -5,4 +5,6 @@ import java.util.Optional;
 
 public interface PhoneContactMongoRepository extends MongoRepository<PhoneContactMongo, String> {
     Optional<PhoneContactMongo> findByPhoneNumber(String phoneNumber);
+    void deleteByPhoneNumber(String phoneNumber);
+    boolean existsByPhoneNumber(String phoneNumber);
 }

@@ -4,10 +4,8 @@ import com.chenemesov.phonebook.model.PhoneContactMongo;
 import com.chenemesov.phonebook.service.PhoneContactMongoService;
 import com.chenemesov.phonebook.util.PhoneContactMongoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/mongo-contacts")
@@ -25,5 +23,16 @@ public class PhoneContactMongoController {
     public PhoneContactMongoDTO getById(@PathVariable String id) {
         PhoneContactMongo contact = service.getById(id);
         return PhoneContactMongoConverter.toDTO(contact);
+    }
+    @DeleteMapping("/phone/{phoneNumber}")
+    public ResponseEntity<Void> deleteByPhoneNumber(@PathVariable String phoneNumber) {
+        service.deleteByPhoneNumber(phoneNumber);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable String id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

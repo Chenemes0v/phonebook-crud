@@ -18,4 +18,17 @@ public class PhoneContactMongoService {
         return repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("PhoneContact not found with id: " + id));
     }
+    public void deleteByPhoneNumber(String phoneNumber) {
+        if (!repository.existsByPhoneNumber(phoneNumber)) {
+            throw new EntityNotFoundException("Contact with phone number " + phoneNumber + " not found.");
+        }
+        repository.deleteByPhoneNumber(phoneNumber);
+    }
+
+    public void deleteById(String id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("Contact with ID " + id + " not found.");
+        }
+        repository.deleteById(id);
+    }
 }
