@@ -15,6 +15,11 @@ public class PhoneContactService {
     @Autowired
     private PhoneContactRepository repository;
 
+    @Autowired
+    public PhoneContactService(PhoneContactRepository repository) {
+        this.repository = repository;
+    }
+
     public PhoneContact getByPhoneNumber(String phoneNumber) {
         return repository.findByPhoneNumber(phoneNumber)
                 .orElseThrow(() -> new EntityNotFoundException("PhoneContact not found with phone number: " + phoneNumber));
