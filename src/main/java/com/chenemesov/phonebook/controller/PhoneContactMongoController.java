@@ -46,4 +46,17 @@ public class PhoneContactMongoController {
         List<PhoneContactMongo> contacts = service.getAllContacts(filter);
         return contacts.stream().map(PhoneContactMongoConverter::toDTO).collect(Collectors.toList());
     }
+    @PutMapping("/id/{id}")
+    public PhoneContactMongoDTO updateById(@PathVariable String id, @RequestBody PhoneContactMongoDTO contactDTO) {
+        PhoneContactMongo updatedContact = PhoneContactMongoConverter.toEntity(contactDTO);
+        PhoneContactMongo savedContact = service.updateById(id, updatedContact);
+        return PhoneContactMongoConverter.toDTO(savedContact);
+    }
+
+    @PutMapping("/phone/{phoneNumber}")
+    public PhoneContactMongoDTO updateByPhoneNumber(@PathVariable String phoneNumber, @RequestBody PhoneContactMongoDTO contactDTO) {
+        PhoneContactMongo updatedContact = PhoneContactMongoConverter.toEntity(contactDTO);
+        PhoneContactMongo savedContact = service.updateByPhoneNumber(phoneNumber, updatedContact);
+        return PhoneContactMongoConverter.toDTO(savedContact);
+    }
 }

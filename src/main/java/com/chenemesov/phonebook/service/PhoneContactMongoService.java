@@ -39,4 +39,18 @@ public class PhoneContactMongoService {
         Pageable pageable = PageRequest.of(filter.getOffset(), filter.getLimit());
         return repository.findAll(pageable).getContent();
     }
+    public PhoneContactMongo updateById(String id, PhoneContactMongo updatedContact) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("Contact with ID " + id + " not found.");
+        }
+        updatedContact.setId(id);
+        return repository.save(updatedContact);
+    }
+
+    public PhoneContactMongo updateByPhoneNumber(String phoneNumber, PhoneContactMongo updatedContact) {
+        PhoneContactMongo contact = repository.findByPhoneNumber(phoneNumber)
+                .orElseThrow(() -> new EntityNotFoundException("Contact with phone number " + phoneNumber + " not found."));
+        updatedContact.setId(contact.getId());
+        return repository.save(updatedContact);
+    }
 }
