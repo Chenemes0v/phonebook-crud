@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "a2fed779-d535-4a93-868b-5b61f1d50851",
+		"name": "Phonebook API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23973200"
+	},
+	"item": [
+		{
+			"name": "Get Contact by Phone Number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/phone-contacts/phone/87056974477",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"phone-contacts",
+						"phone",
+						"87056974477"
+					]
+				},
+				"description": "Method: GET\r\nURL: /api/phone-contacts/phone/{phoneNumber}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contact by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/phone-contacts/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"phone-contacts",
+						"5"
+					]
+				},
+				"description": "Method: GET\r\nURL: /api/phone-contacts/{id}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contact by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/phone-contacts/id/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"phone-contacts",
+						"id",
+						"3"
+					]
+				},
+				"description": "Method: DELETE\r\nURL: /api/phone-contacts/{id}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contact by Phone Number",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/phone-contacts/phone/87754585225",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"phone-contacts",
+						"phone",
+						"87754585225"
+					]
+				},
+				"description": "Method: DELETE\r\nURL: /api/phone-contacts/phone/{phoneNumber}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contacts with Pagination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"limit\": 5,\r\n    \"offset\": 0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/phone-contacts/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"phone-contacts",
+						"all"
+					]
+				},
+				"description": "Method: GET  \nURL: /api/phone-contacts/all"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Contact by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Рома\",\r\n    \"phoneNumber\": \"87777777777\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/phone-contacts/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"phone-contacts",
+						"2"
+					]
+				},
+				"description": "Method: PUT\r\nURL: /api/phone-contacts/{id}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contact By Phone Number (Mongo)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/mongo-contacts/phone/87004001478",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mongo-contacts",
+						"phone",
+						"87004001478"
+					]
+				},
+				"description": "Method: GET  \nURL: [/api/mongo-contacts/phone/{phoneNumber}](http://localhost:8080/api/mongo-contacts/phone/{phoneNumber})"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contact By ID (Mongo)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/mongo-contacts/651be827fa4779292fe29360",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mongo-contacts",
+						"651be827fa4779292fe29360"
+					]
+				},
+				"description": "Method: GET  \nURL: [/api/mongo-contacts/{id}](http://localhost:8080/api/mongo-contacts/{id})"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contact by Phone Number (Mongo)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/mongo-contacts/phone/87756254884",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mongo-contacts",
+						"phone",
+						"87756254884"
+					]
+				},
+				"description": "Method: DELETE\r\nURL: /api/mongo-contacts/phone/{phoneNumber}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contact by ID (Mongo)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/mongo-contacts/651be827fa4779292fe29364",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mongo-contacts",
+						"651be827fa4779292fe29364"
+					]
+				},
+				"description": "Method: DELETE\r\nURL: /api/mongo-contacts/{id}"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Contacts with Pagination (Mongo)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"limit\": 5,\r\n    \"offset\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/mongo-contacts/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mongo-contacts",
+						"all"
+					]
+				},
+				"description": "Method: GET\r\nURL: /api/mongo-contacts/all"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Contact By ID (Mongo)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Васелек\",\r\n    \"phoneNumber\": \"87777777777\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/mongo-contacts/id/651be827fa4779292fe29362",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mongo-contacts",
+						"id",
+						"651be827fa4779292fe29362"
+					]
+				},
+				"description": "Method: PUT\r\nURL: /api/mongo-contacts/id/{id}"
+			},
+			"response": []
+		}
+	]
+}
