@@ -1,4 +1,5 @@
 package com.chenemesov.phonebook.controller;
+import com.chenemesov.phonebook.dto.Filter;
 import com.chenemesov.phonebook.dto.PhoneContactMongoDTO;
 import com.chenemesov.phonebook.model.PhoneContactMongo;
 import com.chenemesov.phonebook.service.PhoneContactMongoService;
@@ -6,6 +7,8 @@ import com.chenemesov.phonebook.util.PhoneContactMongoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/mongo-contacts")
@@ -34,5 +37,13 @@ public class PhoneContactMongoController {
     public ResponseEntity<Void> deleteById(@PathVariable String id) {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/all")
+    public List<PhoneContactMongoDTO> getAllContacts(@RequestBody Filter filter) {
+        if (filter.getLimit() <= 0 || filter.getOffset() < 0) {
+            throw new IllegalArgumentException("Invalid limit or offset values");
+        }
+        List<PhoneContactMongo> contacts = service.getAllContacts(filter);
+        return contacts.stream().map(PhoneContactMongoConverter::toDTO).collect(Collectors.toList());
     }
 }
